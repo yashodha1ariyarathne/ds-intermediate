@@ -1,0 +1,25 @@
+<div class="container">
+
+    <div class="content" [style.width.px]="555">
+
+        <div class="header">
+            {{currentHeader}}
+        </div>
+    
+        <div *ngIf="currentHeader2" class="header">
+            {{currentHeader2}}
+        </div>
+
+        <br>
+
+        {{currentContent}}
+
+    </div>
+
+    <div class="dot-area" [style.width.px]="555">
+
+        <div *ngFor="let aSlide of sliderData; let i = index;" class="a-dot" [style.background-color]="aSlide.dotPeref.color" (click)="setContent(aSlide, i)"></div>
+
+    </div>
+
+</div>

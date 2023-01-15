@@ -1,0 +1,66 @@
+<div class="container" [ngClass]="{'show-background': showBackground}">
+
+    <div class="fixed-area">
+
+        <div class="logo">
+            <img src="./assets/LOGO@3xDecision 2 1.png">
+        </div>
+    
+        <div id="0" class="main-btns select" (click)="userChangeView(_MainViews.enterScreen, false, true)">
+            <img [src]="enterBtn">
+            <label>Enter</label>
+        </div>
+    
+        <div id="1" class="main-btns" (click)="userChangeView(_MainViews.dashboard, true, false)">
+            <img [src]="dashboardBtn">
+            <label>Dashboard</label>
+        </div>
+    
+        <div  id="2" class="main-btns" (click)="userChangeView(_MainViews.keyLocker, true, false)">
+            <img [src]="lockerBtn">
+            <label>Key Locker</label>
+        </div>
+    
+        <div  id="3" class="main-btns">
+            <img [src]="settingsBtn">
+            <label>Settings</label>
+        </div>
+    
+        <div class="card-1" *ngIf="showCards">
+            
+            <app-card-slider></app-card-slider>
+    
+        </div>
+    
+        <div class="card-2" *ngIf="showCards">
+    
+            <div class="icon-area">
+                <img src="./assets/home-icon2.png">
+            </div>
+    
+            <div class="title">
+                <label>DreamStakes</label>
+                <label>Auction</label>
+            </div>
+    
+            <div class="ratings">
+                <img src="./assets/star.png">
+                <label>4.9 (5.8k review)</label>
+            </div>
+    
+        </div>
+
+    </div>
+
+
+    <div class="grow-area">
+
+        <div id="999" class="main-btns logout-btn">
+            <img src="./assets/btn-icons/logout.png">
+            <label>Logout</label>
+        </div>
+        
+    </div>
+
+
+</div>

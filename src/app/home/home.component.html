@@ -1,0 +1,31 @@
+<div class="home">
+
+  <div class="left-panal">
+    <app-left-panal></app-left-panal>
+  </div>
+
+  <div class="content">
+
+    <div class="top-bar">
+      <app-top-bar></app-top-bar>
+    </div>
+
+    <div class="client-area">
+
+      <app-enter-screen *ngIf="currentMainView === _MainViews.enterScreen"></app-enter-screen>
+
+      <app-dashboard *ngIf="currentMainView === _MainViews.dashboard"></app-dashboard>
+
+      <app-user-profile *ngIf="currentMainView === _MainViews.userProfile"></app-user-profile>
+
+      <app-key-locker *ngIf="currentMainView === _MainViews.keyLocker"></app-key-locker>
+
+    </div>
+
+  </div>
+
+  <div class="right-panal" *ngIf="rightPanal">
+    <app-right-panal></app-right-panal>
+  </div>
+
+</div>

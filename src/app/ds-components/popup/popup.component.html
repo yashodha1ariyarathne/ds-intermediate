@@ -1,0 +1,387 @@
+<div class="container popup-cotroller" [style.width.px]="width ? width : 'initial'" [style.height.px]=" height ? height : 'initial'">
+
+    <p-dialog [(visible)]="display" position="top" [draggable]="false" (onHide)="close(popupData?.customContents)" [transitionOptions]="'200ms'">
+
+        <p-header>
+            {{popupData?.header}}
+        </p-header>
+
+        <div class="content-header">
+            {{popupData?.contentHeader}}
+        </div>
+
+        <div *ngIf="!popupData?.customContents" [innerHTML]="popupData?.content | safeHtml">
+        </div>
+
+        <div *ngIf="popupData?.customContents == 'agreement'">
+
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis tempus et lacus at maximus. Vivamus dignissim tincidunt turpis, eu lacinia justo tempor eu. Morbi aliquam nulla non porta tincidunt. Vivamus at ultricies enim, eget tempus quam. Etiam nisi felis, ultricies ut eros nec, accumsan luctus lectus. Donec justo enim, venenatis ac tellus quis, congue ultrices arcu. In feugiat nec dolor non vehicula. Proin id tincidunt erat.<br><br>
+
+            Nullam consectetur interdum mollis. Morbi in lacus sapien. Vivamus aliquet massa sed lacus pretium lacinia. Maecenas quis leo sed tortor maximus eleifend. Sed sit amet facilisis neque. Proin tempus massa sit amet lorem sagittis, at ultricies quam auctor. Suspendisse quis nulla commodo, elementum felis vel, pellentesque justo. In mi sem, fringilla at fermentum at, vulputate suscipit sapien. Vivamus at tincidunt libero, id rutrum nulla. Curabitur auctor lectus sit amet ex imperdiet consequat. Donec tempor magna sapien, tempus ultricies neque ultricies sed.<br><br>
+      
+          <ul>
+            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+            <li>Proin auctor ex quis sollicitudin semper.</li>
+            <li>Aliquam semper enim nec laoreet mattis.</li>
+            <li>Vivamus interdum elit vitae condimentum pretium.</li>
+            <li>Nullam vel ligula semper, viverra nulla in, pulvinar turpis.</li>
+            <li>Curabitur non elit congue, rutrum massa ut, tempor orci.</li>
+          </ul>
+
+          <br>
+          <br>
+          <br>
+
+          <p-checkbox name="groupname" value="val1" label="I agree with the"></p-checkbox><label style="margin-left: 3px; cursor: pointer; font-family: 'Open Sans'; font-style: normal; font-weight: 600; font-size: 15px; line-height: 24px; text-decoration-line: underline; color: #F9A369;" (click)="sendCommandToParent('showTearms')">Terms and Conditions</label>
+          <br>
+          <br>
+          <p-checkbox name="groupname" value="val2" label="I agree with For"></p-checkbox><label style="position: relative; top: 2px; left:5px; cursor: pointer; font-family: 'Open Sans'; font-style: normal; font-weight: 600; font-size: 15px; line-height: 24px; text-decoration-line: underline; color: #F9A369;" (click)="sendCommandToParent('showPrivacyPolicy')">Privacy Policy</label>
+
+        </div>
+
+        <div *ngIf="popupData?.customContents == 'payments'">
+
+            <p-radioButton name="groupname" value="cc" label="Credit & Debit Cards" [(ngModel)]="paymenttype"></p-radioButton>
+            <br>
+            <br>
+
+            <div *ngIf="paymenttype == 'cc'" style="width: 410px;">
+
+                <div class="input-wrapper">
+
+                    <span class="button-label">Card number</span>
+
+                    <div class="ui-inputgroup">
+                        <input type="text" pInputText placeholder="0000 0000 0000 0000" class="common-txt">   
+                        <span class="ui-inputgroup-addon" style="padding-top: 13px;">
+                            <img src="./assets/popup-btns/cc.png" style="width: 22px; height: 15px;">
+                        </span>  
+                    </div>
+
+                </div>
+
+
+                <div style="display: flex; justify-content: space-between;">
+
+                    <div class="input-wrapper" style="width: 200px;">
+
+                        <span class="button-label">Expiry date</span>
+    
+                        <div class="ui-inputgroup">
+    
+                            <input type="text" pInputText placeholder="MM/YY" class="common-txt">   
+                            <span class="ui-inputgroup-addon">
+                                <img src="./assets/popup-btns/calender.png" style="width: 18px; height: 19px; position: relative; top: 8px;">
+                            </span> 
+    
+                        </div>
+    
+                    </div>
+    
+                    <div class="input-wrapper" style="width: 200px;">
+    
+                        <span class="button-label">CVC/CVV</span>
+    
+                        <div  class="ui-inputgroup">
+                            <input type="text" pInputText placeholder="..." class="common-txt">   
+                            <span class="ui-inputgroup-addon">
+                                <img src="./assets/popup-btns/info.png" style="width: 16px; height: 16px; position: relative; top: 8px;">
+                            </span> 
+                        </div>
+             
+                    </div>
+
+                </div>
+
+
+                <div class="input-wrapper">
+
+                    <span class="button-label">Cardholder name</span>
+
+                    <div class="ui-inputgroup" style="margin-bottom: 22px;">
+                        <input type="text" pInputText placeholder="Enter cardholder’s full name" style="width: 100%;" class="common-txt">   
+                        <span class="ui-inputgroup-addon" style="padding-top: 13px;">
+                            <img src="./assets/popup-btns/cc.png" style="width: 22px; height: 15px;">
+                        </span>  
+                    </div>
+
+                </div>
+
+
+                <div>
+                    <p-radioButton name="groupname" value="val2" label="Save card"></p-radioButton>
+                </div>
+
+                <div style="margin-top: 25px; margin-bottom: 65px;">
+                    <p-button label="Add card" class="p-button-warning"></p-button>
+                </div>
+
+            </div>
+
+            <p-radioButton name="groupname" value="paypal" label="Paypal" [(ngModel)]="paymenttype"></p-radioButton>
+
+            <div *ngIf="paymenttype == 'paypal'" style="width: 475px;">
+
+                <div class="input-wrapper">
+
+                    <span class="button-label">Email address</span>
+
+                    <div class="ui-inputgroup">
+                        <input type="text" pInputText placeholder="Enter your paypal email address" class="common-txt">   
+                        <span class="ui-inputgroup-addon" style="padding-top: 13px;">
+                            <img src="./assets/popup-btns/cc.png" style="width: 22px; height: 15px;">
+                        </span>  
+                    </div>
+
+                </div>
+
+
+                <div>
+                    <p-radioButton name="groupname" value="val2" label="Save paypal"></p-radioButton>
+                </div>
+
+                <div style="margin-top: 45px;">
+                    <p-button label="Add paypal" class="p-button-warning"></p-button>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="place-bid" *ngIf="popupData?.customContents == 'placeBid'">
+
+            <div style="width: 100%; text-align: center;">
+
+                <div style="font-family: 'Open Sans'; font-style: normal; font-weight: 700; font-size: 32px; line-height: 28px; color: #2C2C2C; margin-bottom: 15px;">
+                    Heffel Fine Art Auction House
+                </div>
+
+                <div style="font-family: 'Open Sans'; font-style: normal; font-weight: 600; font-size: 20px; line-height: 28px; color: #2C2C2C; margin-bottom: 20px;">
+                    Duplex Auction House
+                </div>
+
+                <div style="font-family: 'Open Sans'; font-style: normal; font-weight: 400; font-size: 20px; line-height: 28px; color: #2C2C2C; margin-bottom: 40px;">
+                    Current Bid : $4575
+                </div>
+
+            </div>
+
+            <div style="width: 100%; height: 0px; border: 1px solid rgba(44, 44, 44, 0.2); margin-bottom: 56px;"></div>
+
+            <div style="display: flex; flex-direction: row; align-items: center;">
+            
+            
+                <div style="width: 515px;">
+                
+                    <img style="width: 100%; height: 555px;" src="./assets/dasboard/placebid/bidding-house.png">
+
+                </div>
+
+                <div style="display: flex; flex-direction: column; flex-grow: 1; height: 555px; padding: 10px 0px 0px 50px;">
+                
+                    <div style="font-family: 'Open Sans'; font-style: normal; font-weight: 600; font-size: 20px; line-height: 28px; text-align: justify; color: #2C2C2C; margin-bottom: 30px;">
+                        The bid you enter must be higher than the highest bid
+                    </div>
+
+                    <div style="display: flex; flex-direction: row; justify-content: space-between; align-items: center; max-width: 450px;">
+
+                        <div style="font-family: 'Open Sans'; font-style: normal; font-weight: 600; font-size: 50px; line-height: 68px; text-align: center; color: #2C2C2C;">
+                            $
+                        </div>
+
+                        <div style="width: 284px; height: 54px;">
+                            <!-- <input type="text" pInputText class="common-txt" placeholder="Enter Bid"/> -->
+                            <span class="ui-float-label" style="margin-left: -7px;">
+                                <input id="float-input" type="text" size="30" pInputText class="common-txt"> 
+                                <label for="float-input">Enter Bid</label>
+                            </span>
+
+                            <div style="font-family: 'Open Sans';
+                                font-style: normal;
+                                font-weight: 400;
+                                font-size: 16px;
+                                line-height: 22px;
+                                text-align: start;
+                                margin-top: 5px;
+                                color: #FF0000;"
+                            >
+                                Highest Bid is 500$*
+                            </div>
+
+                        </div>
+
+                        <div style="position: relative; top: -3px; width: 97px; height: 53px;">
+                        
+                            <div style="display: flex; flex-direction: column; justify-content: center; align-items: center; width: 100%; height: 100%; background: #F9A369; border-radius: 10px; font-family: 'Be Vietnam Pro'; font-style: normal; font-weight: 600;
+                                font-size: 16px;
+                                line-height: 24px;
+                                text-align: center;
+                                color: #FFFFFF;"
+                            >
+                                Bid
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="details">
+
+                        <div class="item">
+
+                            <div class="title-area">
+                
+                                <label>
+                                    Your Bid
+                                </label>
+                
+                            </div>
+                
+                            <div class="val">
+                                $0.00
+                            </div>
+                
+                        </div>
+
+                        <div class="hr-line"></div>
+
+                        <div class="item">
+
+                            <div class="title-area">
+                
+                                <label>
+                                    Authentication Fee
+                                </label>
+                
+                            </div>
+                
+                            <div class="val">
+                                Free
+                            </div>
+                
+                        </div>
+
+                        <div class="hr-line"></div>
+
+                        <div class="item">
+
+                            <div class="title-area">
+                
+                                <label style="font-weight: 600;">
+                                    Total (USD)
+                                </label>
+                
+                            </div>
+                
+                            <div class="val">
+                                $0.00
+                            </div>
+                
+                        </div>
+
+                    </div>
+
+                    <div style="max-width: 590px; display: flex; flex-direction: row; justify-content: center; align-items: center; margin-top: 60px;">
+
+                        <div style="font-family: 'Poppins';
+                            font-style: normal;
+                            font-weight: 500;
+                            font-size: 17px;
+                            line-height: 26px;
+                            text-decoration-line: underline;
+                            color: #F9A369;"
+                        >
+                            Pay via Dream Coins
+                        </div>
+
+                        <div style="display: flex; flex-direction: row; justify-content: flex-end; flex-grow: 1;">
+
+                            <div style="
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                width: 170px;
+                                height: 52px;
+                                background: rgba(249, 163, 105, 0.5);
+                                font-family: 'Poppins';
+                                font-style: normal;
+                                font-weight: 500;
+                                font-size: 17px;
+                                line-height: 26px;
+                                color: #FCFCFC;
+                                cursor: pointer;"
+                                (click)="sendCommandToParent('reviewBid')"
+                            >
+                                Review Bid
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+        <div class="profile-popups" *ngIf="popupData?.customContents == 'change-phone-number'">
+
+            <p-checkbox name="group1" value="I changed my primary number" label="I changed my primary number" inputId="ny"></p-checkbox>
+            <p-checkbox name="group1" value="I lost my phone" label="I lost my phone" inputId="ny"></p-checkbox>
+            <p-checkbox name="group1" value="This is not my primary number" label="This is not my primary number" inputId="ny"></p-checkbox>
+            <p-checkbox name="group1" value="I made a typing error" label="I made a typing error" inputId="ny"></p-checkbox>
+            <p-checkbox name="group1" value="My number is suspended" label="My number is suspended" inputId="ny"></p-checkbox>
+            <p-checkbox name="group1" value="Other" label="Other" inputId="ny"></p-checkbox>
+
+            <div class="submit-btn">
+                <img src="./assets/profile/submit-btn.png" (click)="sendCommandToParent('submit')">
+            </div>
+
+            <div class="ins">
+                <span>*</span>Your changes are live after admin approvel
+                <br>
+                <span>*</span>Admin will sent you a link to update your phone number
+            </div>
+
+        </div>
+
+        <div class="profile-popups" *ngIf="popupData?.customContents == 'change-address'">
+
+            <p-checkbox name="group1" value="I changed my home" label="I changed my home" inputId="ny"></p-checkbox>
+            <p-checkbox name="group1" value="I moved to another country" label="I moved to another country" inputId="ny"></p-checkbox>
+            <p-checkbox name="group1" value="This is not my primary address" label="This is not my primary address" inputId="ny"></p-checkbox>
+            <p-checkbox name="group1" value="I made a typing error" label="I made a typing error" inputId="ny"></p-checkbox>
+            <p-checkbox name="group1" value="Other" label="Other" inputId="ny"></p-checkbox>
+
+            <div class="submit-btn">
+                <img src="./assets/profile/submit-btn.png" (click)="sendCommandToParent('submit')">
+            </div>
+
+            <div class="ins">
+                <span>*</span>Your changes are live after admin approvel
+                <br>
+                <span>*</span>Admin will sent you a link to update your phone number
+            </div>
+
+        </div>
+
+        <p-footer *ngIf="popupData?.showFooter">
+
+            <div>
+
+                <img [style.visibility]="popupData?.bckButton ? 'visible' : 'hidden'" src="./assets/popup-btns/back-arrow.png" (click)="sendCommandToParent('back')">
+
+                <img class="submit-btn" *ngIf="popupData?.customFooterButton?.includes('submit')" src="./assets/popup-btns/submit-btn.png" (click)="sendCommandToParent('submit')">
+
+                <img *ngIf="popupData?.nxtButton" src="./assets/popup-btns/next-arrao.png" (click)="sendCommandToParent('next')">
+
+                <img *ngIf="popupData?.customFooterButton?.includes('finish')" style="width: 170px; height: 52px;" src="./assets/dasboard/finish.png" (click)="sendCommandToParent('close')">
+
+            </div>
+
+        </p-footer>
+
+    </p-dialog>
+
+</div>

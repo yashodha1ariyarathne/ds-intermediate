@@ -1,0 +1,135 @@
+<div class="container">
+
+    <div class="cards-area">
+
+        <div class="a-card" *ngFor="let aCard of cards">
+
+            <div class="icon">
+                <img [src]="aCard.icon">
+            </div>
+
+            <div class="title">
+                {{ aCard.title }}
+            </div>
+
+            <div class="info">
+
+                {{ aCard.info }}
+
+                <img *ngIf="aCard.infoIcon" [src]="aCard.infoIcon">
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="rooms-area">
+
+        <div class="room-count">
+
+            <div class="drpdwn-area">
+                <p-dropdown [options]="houses" [(ngModel)]="selectedHouse" (onChange)="setRoom()"></p-dropdown>
+            </div>
+
+            <div class="count-area">
+                Room {{selectedHouse.id}} Of {{houses.length}}
+            </div>
+           
+        </div>
+
+        <div *ngIf="currentRoom.type == 1">
+            <ng-container *ngTemplateOutlet="room; context: {'currentRoom': currentRoom}"></ng-container>
+        </div>
+
+        <div *ngIf="currentRoom.type == 0">
+            <ng-container *ngTemplateOutlet="conclude;"></ng-container>
+        </div>
+        
+
+    </div>
+
+    <app-popup [display]="placeBid" (notifyParent)="recieveFromPopupDialog($event)" [popupData]="currentPopupPage"></app-popup>
+
+</div>
+
+<ng-template #room let-currentRoom="currentRoom">
+
+    <div class="bidding-area">
+
+        <div class="left">
+
+            <img [src]="currentRoom.houseImage">
+
+        </div>
+
+        <div class="right">
+
+            <div class="title">
+                {{currentRoom.title}}
+            </div>
+
+            <div class="info">
+
+                <div class="start">
+
+                    <label class="info-title">Starting Bid</label>
+                    <label class="desc">${{currentRoom.info.startBid}}</label>
+
+                </div>
+
+                <div class="high">
+
+                    <label class="info-title">Highest Bid</label>
+                    <label class="desc">${{currentRoom.info.heighestBid}}</label>
+
+                </div>
+
+                <div class="total">
+
+                    <label class="info-title">Total Bids</label>
+                    <label class="desc">{{currentRoom.info.totalBids}}</label>
+
+                </div>
+
+            </div>
+
+            <div class="buttons-area">
+
+                <div class="custom-bid-btn" (click)="showPlaceBid()">
+                    Custom Bid
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="bidding-info">
+
+        <div class="info-title">
+
+            {{currentRoom.biddingInfo.title}}
+
+            <img src="./assets/dasboard/info.png">
+
+        </div>
+
+        <div class="desc">
+
+            {{currentRoom.biddingInfo.desc}}
+
+            <ol type="a">
+                <li *ngFor="let item of currentRoom.biddingInfo.list">{{item}}</li>
+            </ol>
+
+        </div>
+
+    </div>
+
+</ng-template>
+
+<ng-template #conclude>
+    Coming Soon
+</ng-template>

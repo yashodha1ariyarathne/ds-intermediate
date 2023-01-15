@@ -1,0 +1,37 @@
+.home{
+
+    display: flex;
+    width: 100%;
+    height: 100%;
+    
+    .left-panal{
+        width: 230px;
+        float: left;
+        height: 100%;
+    }
+
+
+    .content{
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+        height: 100%;
+        
+        .client-area{
+            width: 100%;
+            min-width: 875px;
+            height: 100%;
+            overflow-y: auto;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+    }
+    
+    .right-panal {
+        width: 343px;
+        height: 100%;
+        flex-shrink: 0;
+    }
+
+}

@@ -1,0 +1,72 @@
+<div class="container">
+
+    <div class="slider-wrapper">
+
+        <div class="slider-btns">
+            <div class="left">
+                <img src="./assets/btn-icons/icons8_back 1.png">
+            </div>
+            <div class="right">
+                <img src="./assets/btn-icons/icons8_next 2.png">
+            </div>
+        </div>
+
+        <div class="slider">
+            <div class="card card-pol-1"></div>
+            <div class="card card-pol-2">
+                <div class="content">
+                    <div class="header">
+                        DreamStakes Duplex Auction House
+                    </div>
+
+                    <div class="middle-txt">
+                        ROOM 1.1-2
+                    </div>
+
+                    <div class="btn">
+                        $100
+                    </div>
+
+                    <div class="bottom-txt" (click)="showDialog()">
+                        Enter Now
+                    </div>
+
+                </div>
+            </div>
+            <div class="card card-pol-3"></div>
+        </div>
+
+    </div>
+
+
+    <div class="info-area">
+
+        <div class="slider">
+            <app-common-slider [sliderData]="sliderData"></app-common-slider>
+        </div>
+
+        <div class="img-area">
+
+            <div class="txt">
+                <div class="big-txt">
+                    500+ Contractors
+                </div>
+                <div class="small-txt">
+                    <img src="./assets/white-star.png"> 4.9 (5.8k review)
+                </div>
+            </div>
+
+            <img src="./assets/house-info.png">
+
+        </div>
+
+    </div>
+
+    <!-- showDialogUI -->
+    <app-popup [display]="showDialogUI" (notifyParent)="recieveFromPopupDialog($event)" [popupData]="currentPopupPage"></app-popup>
+
+    <app-popup [display]="showTearms" (notifyParent)="recieveFromPopupDialog($event)" [popupData]="customPopupContents[0]"></app-popup>
+
+    <app-popup [display]="showPrivacyPolicy" (notifyParent)="recieveFromPopupDialog($event)" [popupData]="customPopupContents[1]"></app-popup>
+
+</div>

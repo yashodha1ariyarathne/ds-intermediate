@@ -1,0 +1,186 @@
+<div class="container">
+
+    <div class="cards-area">
+
+        <div class="a-card" *ngFor="let aCard of cards">
+
+            <div class="icon">
+                <img [src]="aCard.icon">
+            </div>
+
+            <div class="title">
+                {{ aCard.title }}
+            </div>
+
+            <div class="info">
+
+                {{ aCard.info }}
+
+                <img *ngIf="aCard.infoIcon" [src]="aCard.infoIcon">
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="user-info">
+
+        <div class="pro-pic-large">
+
+            <div class="pic">
+
+                <img src="./assets/profile/pro-pic.png">
+            </div>
+
+            <div class="info">
+
+                <div class="username">
+                    William Fancyson
+                </div>
+
+                <div class="desc">
+                    Update your photo and personal details.
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="info">
+
+            <div class="item">
+
+                <div class="title">
+                    Username
+                </div>
+
+                <div class="value">
+                    <input id="input" type="text" size="30" pInputText> 
+                </div>
+
+            </div>
+
+            <div class="item">
+
+                <div class="title">
+                    Email Address
+                </div>
+                
+                <div class="value">
+                    <input id="input" type="text" size="30" pInputText> 
+                </div>
+
+            </div>
+
+            <div class="item" style="margin-bottom: 40px; margin-top: 40px;">
+
+                <div class="title">
+
+                    <div>
+                        Your Photo
+                    </div>
+                    
+
+                    <div class="sub-text">
+                        This will be displayed on your profile
+                    </div>
+
+                </div>
+                
+                <div class="image-area">
+
+                    <img src="./assets/profile/pro-pic.png">
+
+                </div>
+
+                <div class="actions">
+
+                    <label>
+                        Delete
+                    </label>
+
+                    <label>
+                        Update
+                    </label>
+
+                </div>
+
+            </div>
+
+            <div class="item">
+
+                <div class="title">
+                    Phone Number
+                </div>
+                
+                <div class="value">
+                    <input id="input" type="text" style="background: #D9D9D9;" size="30" pInputText> 
+                </div>
+
+                <div class="edit" (click)="changePhoneNumber()">
+                    Change
+                </div>
+
+            </div>
+
+            <div class="item">
+
+                <div class="title">
+                    Address
+                </div>
+                
+                <div class="value">
+                    <input id="input" type="text" style="background: #D9D9D9;" size="30" pInputText> 
+                </div>
+
+                <div class="edit" (click)="changeAddress()">
+                    Change
+                </div>
+
+            </div>
+
+            <div class="item">
+
+                <div class="title">
+                    Date of Birth
+                </div>
+                
+                <div class="value">
+                    <input id="input" type="text" style="background: #D9D9D9;" size="30" pInputText> 
+                </div>
+
+                <div class="edit">
+                    Change
+                </div>
+
+            </div>
+
+            <div class="item">
+
+                <div class="title">
+                    Password
+                </div>
+                
+                <div class="value">
+                    <input id="input" type="text" style="background: #D9D9D9;" size="30" pInputText> 
+                </div>
+
+                <div class="edit">
+                    Change
+                </div>
+
+            </div>
+
+            <div class="btn-area">
+                <img src="./assets/profile/save-btn.png">
+            </div>
+
+
+        </div>
+
+    </div>
+
+    <app-popup *ngIf="showPopupWindow" [display]="showPopupWindow" (notifyParent)="recieveFromPopupDialog($event)" [popupData]="currentPopupPage" [width]="width" [height]="height"></app-popup>
+
+</div>
