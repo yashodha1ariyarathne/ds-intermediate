@@ -25,7 +25,7 @@ export class HomeComponent implements OnInit {
 
 			this.currentMainView = command.mainView;
 
-      if(this.currentMainView === this._MainViews.dashboard)
+      if(this.currentMainView === this._MainViews.keyLocker)
         this.rightPanal = true;
       else
         this.rightPanal = false;
